@@ -1,0 +1,7 @@
+
+services:
+  python314:
+    build: ./python314
+
+  python312:
+    build: ./python312
