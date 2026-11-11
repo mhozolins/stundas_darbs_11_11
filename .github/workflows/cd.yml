@@ -1,0 +1,24 @@
+
+name: Docker CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, Windows, X64]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker images
+        run: docker compose build
+
+      - name: Run Docker containers
+        run: docker compose up -d
+
+      - name: Show containers
+        run: docker compose ps -a
